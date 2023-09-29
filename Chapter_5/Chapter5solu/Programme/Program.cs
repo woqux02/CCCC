@@ -58,6 +58,29 @@ namespace Chapter5
             var SuGuo = new DefaultVar();
             WriteLine("you buy {0} * {1}, at {2}.",
                 arg0: SuGuo.Name, arg1: SuGuo.Number, arg2: SuGuo.BuyTime);
+
+            bob.PrintConsole();
+            WriteLine(bob.PrintString());
+            
+            // 返回多种类型的值
+            (string, int) fruit = bob.GetFood();
+            WriteLine($"Bob has {fruit.Item1} * {fruit.Item2}");
+
+            // 如果方法中的参数有默认值，则在调用时可以不填
+            // 注意！！！赋值用 : 而不是 = 
+            WriteLine(bob.DoList(dowhat: "sport", hour: 2, place: "park"));
+            WriteLine(bob.DoList(dowhat: "study"));
+
+            // 传递参数，ref 相当于实参 out 则会完全使用方法内部的变量
+            int x = 10, y = 20, z = 30;
+            WriteLine($"Before: x = {x}, y = {y}, z = {z}");
+            bob.Calculate(x, ref y, out z);
+            WriteLine($"After: x = {x}, y = {y}, z = {z}");
+
+            // 属性没有（），不需要传递参数，感觉像一种静态的方法
+            // 属性里面可以设置参数值（用 get set 两个关键字），但因为基本不用，暂时不写了
+            WriteLine(bob.havelunch);
+
         }
     }
 }

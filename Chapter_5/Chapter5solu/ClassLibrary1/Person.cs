@@ -28,5 +28,56 @@ namespace Packt.Shared
             Name = initName;
             Fruit = likeFruit;
         }
+        
+        // 返回值
+        public void PrintConsole()
+        {
+            Console.WriteLine("This is Void Method");
+        }
+
+        public string PrintString()
+        {
+            return "This Method return string.";
+        }
+
+        public (string, int) GetFood()
+        {
+            return ("BlueBarry", 3);
+        }
+
+        /*
+         * 参数默认用 Item 调用，也可以自定义名称
+        public (string FruitName, int FruitNum) GetFood()
+        {
+            return ("BlueBarry", 3);
+        }
+        */
+
+        // 可选参数
+        public string DoList(
+            string dowhat = "Nothing",
+            int hour = 1,
+            string place = "Home")
+        {
+            return $"You will do {dowhat} for {hour} hour at {place}.";
+        }
+
+        // 传递参数
+        public void Calculate(int x, ref int y, out int z)
+        {
+            z = 65;
+            x++;
+            y++;
+            z++;
+        }
+
+        // 属性
+        public string havelunch
+        {
+            get
+            {
+                return $"{Name} will eat {Food} and {Fruit} at lunch.";
+            }
+        }
     }
 }
