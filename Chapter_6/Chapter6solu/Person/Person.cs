@@ -4,7 +4,7 @@ using static System.Console;
 
 namespace Packt.Shared
 {
-    public class Person
+    public class Person : IComparable<Person>
     {
         // 有字段 Name，DateOfBirth，Person类的List叫Children
         public string Name;
@@ -48,10 +48,11 @@ namespace Packt.Shared
             return s.Length;
         }
 
-        // 创建一个委托，这个案例不知道怎么写
+        // 创建一个委托，这个案例不会
         // delegate int ToMethod(string m);
         // var d = new ToMethod(p1.NameLength);
 
+        // 这是一个事件
         public EventHandler Shout;
         public int AngerLevel;
         public void Poke()
@@ -64,6 +65,12 @@ namespace Packt.Shared
                     Shout(this, EventArgs.Empty);
                 }
             }
+        }
+ 
+        // 实现接口
+        public int CompareTo(Person other)
+        {
+            return Name.CompareTo(other.Name);
         }
     }
 }

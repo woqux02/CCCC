@@ -40,6 +40,59 @@ namespace Chapter6
             harry.Poke();
             harry.Poke();
             harry.Poke();
+
+            // 接口
+            Person[] people =
+            {
+                new Person { Name="Simon" },
+                new Person{ Name="Jenny" },
+                new Person{ Name="Adam" },
+                new Person{ Name="Richard" }
+            };
+            WriteLine("List of people: ");
+            foreach( var person in people ) 
+            {
+                WriteLine(person.Name);
+            }
+            WriteLine("Use IComparale implementation to sort:");
+             Array.Sort(people);
+            foreach( var person in people )
+            {
+                WriteLine(person.Name);
+            }
+
+            // 调用 struct
+            var Vect = new DisplacementVector(10, 20);
+            var Vect2 = new DisplacementVector(1, 2);
+            var Vect3 = Vect + Vect2;
+            WriteLine("  ");
+            WriteLine("This is Struct : DisplacementVectorzz(10, 20) + DisplacementVector(1, 2) = ");
+            WriteLine($"Vect3.x = {Vect3.x}   Vect3.y = {Vect3.y}");
+
+            // 子类
+            WriteLine("  ");
+            WriteLine("子类:");
+            Employee john = new Employee()
+            {
+                Name = "Jone",
+                DateOfBirth = new DateTime(1990, 10, 6)
+            };
+            // 隐藏方法
+            john.WriteToConsole();
+
+            //
+            var EmployeeJason = new Employee() { 
+                Name = "Jason",
+                DateOfBirth = new DateTime(1999, 4, 9)
+            };
+
+            WriteLine("  ");
+            Person PersonJason = EmployeeJason;
+            WriteLine("Person: " + PersonJason.ToString());
+            WriteLine("Employee: " + EmployeeJason.ToString());
+            PersonJason.WriteToConsole();
+            EmployeeJason.WriteToConsole();
+
         }
 
 
